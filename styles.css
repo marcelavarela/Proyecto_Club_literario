@@ -329,3 +329,17 @@ footer {
 }
 
 .btn-agenda:hover { background-color: #cc6600; }
+
+/* ── Estilos para Celulares y Tablets ── */
+@media (max-width: 768px) {
+  
+  /* Hacemos que las 3 tarjetas se pongan una abajo de la otra */
+  .cards-container {
+    flex-direction: column;
+  }
+
+  /* Hacemos que el video y la agenda se apilen verticalmente */
+  .seccion-entrevista {
+    flex-direction: column;
+  }
+}
