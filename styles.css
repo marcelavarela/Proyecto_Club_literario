@@ -43,6 +43,13 @@ nav {
   display: flex;
   align-items: center;
   background-color: darkorange;
+  position: relative; /* ← AGREGÁ ESTA LÍNEA (Clave para posicionar el menú en celular) */
+}
+
+
+/* Ocultamos el checkbox y el ícono en la computadora */
+.menu-checkbox, .menu-icono {
+  display: none;
 }
 
 nav ul {
@@ -343,32 +350,53 @@ footer {
     flex-direction: column;
   }
 }
-/* ── Ajustes para pantallas chicas (Celulares y Tablets) ── */
+/* ── Diseño para Celulares y Tablets (Menú Hamburguesa) ── */
 @media (max-width: 768px) {
   
-  /* Sacamos la altura fija de 40px para que el menú pueda estirarse hacia abajo */
-  nav {
-    height: auto;
-    padding: 15px 0;
+  /* Mostramos el botón de las tres rayitas a la derecha */
+  .menu-icono {
+    display: block;
+    color: white;
+    font-size: 24px;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-left: auto; /* Empuja el ícono a la derecha */
   }
 
-  /* Cambiamos la dirección a columna para que los enlaces se apilen uno abajo del otro */
+  /* Escondemos el menú por defecto y lo posicionamos flotando abajo del nav */
+  .menu-container {
+    display: none;
+    position: absolute;
+    top: 40px; /* Justo donde termina la barra naranja */
+    left: 0;
+    width: 100%;
+    background-color: darkorange;
+    z-index: 100; /* Para que flote por encima de las tarjetas */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Forzamos a la lista a ponerse en formato vertical */
   nav ul {
     flex-direction: column;
-    align-items: center;
-    gap: 12px; /* Espacio exacto y uniforme entre cada enlace */
+    width: 100%;
+    gap: 0;
   }
 
-  /* Volvemos los enlaces bloques completos para que tengan mejor área de click */
   nav ul li {
     width: 100%;
     text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
 
   nav ul li a {
-    display: inline-block;
-    font-size: 15px; /* Un puntito más grande para que se lea perfecto en celular */
-    padding: 6px 20px;
-    width: 100%; /* El área de click ocupa todo el ancho disponible */
+    display: block;
+    padding: 12px 0;
+    width: 100%;
+  }
+
+  /* 🌟 LA MAGIA DEL CHECKBOX OCULTO: 
+     Cuando el checkbox esté marcado (:checked), mostramos el contenedor del menú */
+  .menu-checkbox:checked ~ .menu-container {
+    display: block;
   }
 }
