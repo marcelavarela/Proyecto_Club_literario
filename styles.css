@@ -345,19 +345,17 @@ footer {
 /* ── Diseño Exclusivo para Celulares y Tablets ── */
 @media (max-width: 768px) {
   
-  /* Modificamos el nav SOLO en celular */
+  /* 1. ARREGLO DEL NAV */
   nav {
     height: 50px; 
-    justify-content: flex-end; /* Empuja el botón a la derecha */
+    justify-content: flex-end; 
     padding: 0 20px;
   }
 
-  /* Nos aseguramos de que el checkbox no se vea */
   .menu-checkbox {
     display: none !important;
   }
 
-  /* Mostramos las tres rayitas SOLO en celular */
   .menu-icono {
     display: block;
     color: white;
@@ -366,9 +364,8 @@ footer {
     z-index: 110;
   }
 
-  /* Transformamos el contenedor para que sea flotante SOLO en celular */
   .menu-container {
-    display: none; /* Arranca escondido en el celu */
+    display: none; 
     position: absolute;
     top: 50px; 
     left: 0;
@@ -379,7 +376,6 @@ footer {
     padding: 10px 0;
   }
 
-  /* La lista se vuelve vertical SOLO en celular */
   nav ul {
     flex-direction: column;
     align-items: center;
@@ -403,8 +399,24 @@ footer {
     border-bottom: none;
   }
 
-  /* La magia para abrir el menú al tocar el ícono en el celu */
   .menu-checkbox:checked ~ .menu-container {
     display: block;
+  }
+
+  /* 2. 🌟 ¡EL ARREGLO DE LAS TARJETAS! 🌟 */
+  .cards-container {
+    flex-direction: column; /* Hace que se pongan una abajo de la otra en el celu */
+    padding: 1rem; /* Achicamos un toque el margen para ganar espacio */
+  }
+
+  .card {
+    width: 100%; /* Que ocupen todo el ancho disponible del celular */
+    margin-bottom: 1rem;
+  }
+
+  /* 3. ARREGLO DE LA SECCIÓN ENTREVISTA + AGENDA */
+  .seccion-entrevista {
+    flex-direction: column; /* También en vertical para que no se aplaste el video */
+    padding: 0 1rem 1rem;
   }
 }
