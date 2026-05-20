@@ -350,34 +350,50 @@ footer {
     flex-direction: column;
   }
 }
-/* ── Diseño para Celulares y Tablets (Menú Hamburguesa) ── */
+/* ── Diseño para Celulares y Tablets (Menú Hamburguesa Corregido) ── */
 @media (max-width: 768px) {
   
-  /* Mostramos el botón de las tres rayitas a la derecha */
+  /* Forzamos al nav a ser una barra horizontal simple para el botón */
+  nav {
+    height: 50px; /* Un poquito más alta para que sea cómoda */
+    display: flex;
+    justify-content: flex-end; /* Empuja el botón hamburguesa a la derecha */
+    align-items: center;
+    padding: 0 20px;
+    position: relative;
+  }
+
+  /* 1. ESCONDEMOS EL CHECKBOX REAL (El cuadradito azul que se ve en tu captura) */
+  .menu-checkbox {
+    display: none !important;
+  }
+
+  /* 2. ACOMODAMOS EL BOTÓN DE LAS TRES RAYITAS */
   .menu-icono {
     display: block;
     color: white;
-    font-size: 24px;
-    padding: 10px 20px;
+    font-size: 26px; /* Un toque más grande para que se vea bien */
     cursor: pointer;
-    margin-left: auto; /* Empuja el ícono a la derecha */
+    z-index: 110; /* Por encima de todo */
   }
 
-  /* Escondemos el menú por defecto y lo posicionamos flotando abajo del nav */
+  /* 3. EL CONTENEDOR DEL MENÚ (Arranca escondido) */
   .menu-container {
-    display: none;
+    display: none; /* ← Clave: empieza oculto */
     position: absolute;
-    top: 40px; /* Justo donde termina la barra naranja */
+    top: 50px; /* Despliega justo abajo de la barra nav de 50px */
     left: 0;
     width: 100%;
     background-color: darkorange;
-    z-index: 100; /* Para que flote por encima de las tarjetas */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    padding: 10px 0;
   }
 
-  /* Forzamos a la lista a ponerse en formato vertical */
+  /* Reset de la lista interna para celular */
   nav ul {
     flex-direction: column;
+    align-items: center; /* Centra las palabras perfectamente */
     width: 100%;
     gap: 0;
   }
@@ -385,17 +401,21 @@ footer {
   nav ul li {
     width: 100%;
     text-align: center;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
 
   nav ul li a {
     display: block;
-    padding: 12px 0;
+    padding: 14px 0; /* Más espacio vertical para cada sección */
+    font-size: 16px;
     width: 100%;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Línea divisoria sutil */
+  }
+  
+  nav ul li:last-child a {
+    border-bottom: none; /* Le saca la línea al último elemento (Contacto) */
   }
 
-  /* 🌟 LA MAGIA DEL CHECKBOX OCULTO: 
-     Cuando el checkbox esté marcado (:checked), mostramos el contenedor del menú */
+  /* 4. LA MAGIA: Al tocar el ícono, se muestra el menú completo */
   .menu-checkbox:checked ~ .menu-container {
     display: block;
   }
