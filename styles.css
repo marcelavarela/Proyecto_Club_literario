@@ -343,4 +343,32 @@ footer {
     flex-direction: column;
   }
 }
+/* ── Ajustes para pantallas chicas (Celulares y Tablets) ── */
+@media (max-width: 768px) {
+  
+  /* Sacamos la altura fija de 40px para que el menú pueda estirarse hacia abajo */
+  nav {
+    height: auto;
+    padding: 15px 0;
+  }
 
+  /* Cambiamos la dirección a columna para que los enlaces se apilen uno abajo del otro */
+  nav ul {
+    flex-direction: column;
+    align-items: center;
+    gap: 12px; /* Espacio exacto y uniforme entre cada enlace */
+  }
+
+  /* Volvemos los enlaces bloques completos para que tengan mejor área de click */
+  nav ul li {
+    width: 100%;
+    text-align: center;
+  }
+
+  nav ul li a {
+    display: inline-block;
+    font-size: 15px; /* Un puntito más grande para que se lea perfecto en celular */
+    padding: 6px 20px;
+    width: 100%; /* El área de click ocupa todo el ancho disponible */
+  }
+}
