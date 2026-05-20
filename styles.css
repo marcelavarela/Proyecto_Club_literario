@@ -37,19 +37,24 @@ header {
   background-color: #fde8cc;
 }
 
+/* Así debe nacer el nav para la COMPUTADORA */
 nav {
   width: 100%;
   height: 40px;
   display: flex;
   align-items: center;
   background-color: darkorange;
-  position: relative; /* ← AGREGÁ ESTA LÍNEA (Clave para posicionar el menú en celular) */
+  position: relative;
 }
 
-
-/* Ocultamos el checkbox y el ícono en la computadora */
+/* En la computadora, el botón hamburguesa NO debe existir */
 .menu-checkbox, .menu-icono {
   display: none;
+}
+
+/* En la computadora, el contenedor del menú ocupa todo el ancho */
+.menu-container {
+  width: 100%;
 }
 
 nav ul {
@@ -337,51 +342,35 @@ footer {
 
 .btn-agenda:hover { background-color: #cc6600; }
 
-/* ── Estilos para Celulares y Tablets ── */
+/* ── Diseño Exclusivo para Celulares y Tablets ── */
 @media (max-width: 768px) {
   
-  /* Hacemos que las 3 tarjetas se pongan una abajo de la otra */
-  .cards-container {
-    flex-direction: column;
-  }
-
-  /* Hacemos que el video y la agenda se apilen verticalmente */
-  .seccion-entrevista {
-    flex-direction: column;
-  }
-}
-/* ── Diseño para Celulares y Tablets (Menú Hamburguesa Corregido) ── */
-@media (max-width: 768px) {
-  
-  /* Forzamos al nav a ser una barra horizontal simple para el botón */
+  /* Modificamos el nav SOLO en celular */
   nav {
-    height: 50px; /* Un poquito más alta para que sea cómoda */
-    display: flex;
-    justify-content: flex-end; /* Empuja el botón hamburguesa a la derecha */
-    align-items: center;
+    height: 50px; 
+    justify-content: flex-end; /* Empuja el botón a la derecha */
     padding: 0 20px;
-    position: relative;
   }
 
-  /* 1. ESCONDEMOS EL CHECKBOX REAL (El cuadradito azul que se ve en tu captura) */
+  /* Nos aseguramos de que el checkbox no se vea */
   .menu-checkbox {
     display: none !important;
   }
 
-  /* 2. ACOMODAMOS EL BOTÓN DE LAS TRES RAYITAS */
+  /* Mostramos las tres rayitas SOLO en celular */
   .menu-icono {
     display: block;
     color: white;
-    font-size: 26px; /* Un toque más grande para que se vea bien */
+    font-size: 26px;
     cursor: pointer;
-    z-index: 110; /* Por encima de todo */
+    z-index: 110;
   }
 
-  /* 3. EL CONTENEDOR DEL MENÚ (Arranca escondido) */
+  /* Transformamos el contenedor para que sea flotante SOLO en celular */
   .menu-container {
-    display: none; /* ← Clave: empieza oculto */
+    display: none; /* Arranca escondido en el celu */
     position: absolute;
-    top: 50px; /* Despliega justo abajo de la barra nav de 50px */
+    top: 50px; 
     left: 0;
     width: 100%;
     background-color: darkorange;
@@ -390,11 +379,10 @@ footer {
     padding: 10px 0;
   }
 
-  /* Reset de la lista interna para celular */
+  /* La lista se vuelve vertical SOLO en celular */
   nav ul {
     flex-direction: column;
-    align-items: center; /* Centra las palabras perfectamente */
-    width: 100%;
+    align-items: center;
     gap: 0;
   }
 
@@ -405,17 +393,17 @@ footer {
 
   nav ul li a {
     display: block;
-    padding: 14px 0; /* Más espacio vertical para cada sección */
+    padding: 14px 0;
     font-size: 16px;
     width: 100%;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Línea divisoria sutil */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
   
   nav ul li:last-child a {
-    border-bottom: none; /* Le saca la línea al último elemento (Contacto) */
+    border-bottom: none;
   }
 
-  /* 4. LA MAGIA: Al tocar el ícono, se muestra el menú completo */
+  /* La magia para abrir el menú al tocar el ícono en el celu */
   .menu-checkbox:checked ~ .menu-container {
     display: block;
   }
