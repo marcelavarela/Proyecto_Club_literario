@@ -343,28 +343,4 @@ footer {
     flex-direction: column;
   }
 }
-/* ── Ajustes para pantallas chicas (Celulares y Tablets) ── */
-@media (max-width: 768px) {
-  
-  /* Le sacamos la altura fija al nav para que crezca si hay más filas */
-  nav {
-    height: auto;
-    padding: 10px 0;
-  }
 
-  /* Transformamos la lista en una cuadrícula flexible */
-  nav ul {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-    gap: 10px;
-    text-align: center;
-  }
-
-  /* Le damos un poquito más de espacio a los botones para que se puedan tocar fácil con el dedo */
-  nav ul li a {
-    display: block;
-    padding: 8px;
-    background-color: rgba(255, 255, 255, 0.1); /* Un fondo sutil para que parezcan botones */
-    border-radius: 4px;
-  }
-}
